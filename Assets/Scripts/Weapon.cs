@@ -67,9 +67,13 @@ public class Weapon : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private void FireWeapon()
     {
+        //Muzzle flash, recoil animation, gunshot sound
         muzzleEffect.GetComponent<ParticleSystem>().Play();
         animator.SetTrigger("Recoil");
+        SoundManager.Instance.shootingSoundM1911.Play();
+        
         Debug.Log("Firing");
+        
         readyToShoot = false;
         Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
 
