@@ -21,6 +21,12 @@ public class Weapon : MonoBehaviour
     public Transform bulletSpawn;
     public float bulletVelocity = 30;
     public float bulletPrefabLifeTime = 3f;
+    
+    //Muzzle
+    public GameObject muzzleEffect;
+    
+    //Animation
+    public Animator animator;
 
     public enum ShootingMode
     {
@@ -35,6 +41,7 @@ public class Weapon : MonoBehaviour
     {
         readyToShoot = true;
         burstBulletsLeft = bulletsPerBurst;
+        
     }
     
     // Update is called once per frame
@@ -60,6 +67,8 @@ public class Weapon : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private void FireWeapon()
     {
+        muzzleEffect.GetComponent<ParticleSystem>().Play();
+        animator.SetTrigger("Recoil");
         Debug.Log("Firing");
         readyToShoot = false;
         Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
