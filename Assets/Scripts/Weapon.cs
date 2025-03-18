@@ -4,8 +4,6 @@ using UnityEngine.Serialization;
 
 public class Weapon : MonoBehaviour
 {
-    public Camera playerCamera;
-    
     //Shooting
     public bool isShooting, readyToShoot;
     bool allowReset = true;
@@ -104,7 +102,7 @@ public class Weapon : MonoBehaviour
     public Vector3 CalculateDirectionAndSpread()
     {
         //Shooting from the middle of the screen to check where pointing
-        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
         Vector3 targetPoint;
