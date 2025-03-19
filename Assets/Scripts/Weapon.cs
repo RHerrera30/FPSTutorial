@@ -6,6 +6,8 @@ using UnityEngine.Serialization;
 
 public class Weapon : MonoBehaviour
 {
+    public bool isActiveWeapon;
+    
     //Shooting
     public bool isShooting, readyToShoot;
     bool allowReset = true;
@@ -37,7 +39,7 @@ public class Weapon : MonoBehaviour
     public TextMeshProUGUI ammoDisplay;
     
     //Animation
-    public Animator animator;
+    internal Animator animator;
     
     //Weapon Position
     public Vector3 spawnPosition;
@@ -62,7 +64,7 @@ public class Weapon : MonoBehaviour
 
     private void Awake()
     {
-        // animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         readyToShoot = true;
         burstBulletsLeft = bulletsPerBurst;
         
@@ -73,43 +75,47 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bulletsLeft == 0 && isShooting)
+        if(isActiveWeapon)
         {
-            SoundManager.Instance.emptyMagazineSoundM1911.Play();
-        }
-        
-        if (currentShootingMode == ShootingMode.Auto)
-        {
-            //Holding down left mouse button
-            isShooting = Input.GetMouseButton(0);
-        }
-        else if (currentShootingMode == ShootingMode.Single || currentShootingMode == ShootingMode.Burst)
-        {
-            isShooting = Input.GetMouseButtonDown(0);
-        }
+            // animator.enabled = true;
+            if (bulletsLeft == 0 && isShooting)
+            {
+                SoundManager.Instance.emptyMagazineSoundM1911.Play();
+            }
 
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading)
-        {
-            Reload();
-        }
+            if (currentShootingMode == ShootingMode.Auto)
+            {
+                //Holding down left mouse button
+                isShooting = Input.GetMouseButton(0);
+            }
+            else if (currentShootingMode == ShootingMode.Single || currentShootingMode == ShootingMode.Burst)
+            {
+                isShooting = Input.GetMouseButtonDown(0);
+            }
 
-        //Auto-reload empty magazine
-        if (readyToShoot && !isShooting && !isReloading && bulletsLeft <= 0)
-        {
-            //Reload();
-        }
-        
-        if (readyToShoot && isShooting && bulletsLeft > 0)
-        {
-            burstBulletsLeft = bulletsPerBurst;
-            FireWeapon();
-        }
+            if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading)
+            {
+                Reload();
+            }
 
-        if (AmmoManager.Instance.ammoDisplay)
-        {
-            AmmoManager.Instance.ammoDisplay.text = $"{bulletsLeft/bulletsPerBurst}/{magazineSize/bulletsPerBurst}";
+            //Auto-reload empty magazine
+            if (readyToShoot && !isShooting && !isReloading && bulletsLeft <= 0)
+            {
+                //Reload();
+            }
+
+            if (readyToShoot && isShooting && bulletsLeft > 0)
+            {
+                burstBulletsLeft = bulletsPerBurst;
+                FireWeapon();
+            }
+
+            if (AmmoManager.Instance.ammoDisplay)
+            {
+                AmmoManager.Instance.ammoDisplay.text = $"{bulletsLeft / bulletsPerBurst}/{magazineSize / bulletsPerBurst}";
+            }
         }
-}
+    }
 
     // ReSharper disable Unity.PerformanceAnalysis
     private void FireWeapon()
