@@ -38,6 +38,10 @@ public class Weapon : MonoBehaviour
     
     //Animation
     public Animator animator;
+    
+    //Weapon Position
+    public Vector3 spawnPosition;
+    public Vector3 spawnRotation;
 
     public enum WeaponModel
     {
@@ -58,6 +62,7 @@ public class Weapon : MonoBehaviour
 
     private void Awake()
     {
+        // animator = GetComponent<Animator>();
         readyToShoot = true;
         burstBulletsLeft = bulletsPerBurst;
         
