@@ -39,6 +39,14 @@ public class Weapon : MonoBehaviour
     //Animation
     public Animator animator;
 
+    public enum WeaponModel
+    {
+        Pistol1911,
+        M48
+    }
+
+    public WeaponModel thisWeaponModel;
+    
     public enum ShootingMode
     {
         Single,
@@ -106,7 +114,9 @@ public class Weapon : MonoBehaviour
         //Muzzle flash, recoil animation, gunshot sound
         muzzleEffect.GetComponent<ParticleSystem>().Play();
         animator.SetTrigger("Recoil");
-        SoundManager.Instance.shootingSoundM1911.Play();
+        // SoundManager.Instance.shootingSoundM1911.Play();
+        
+        SoundManager.Instance.PlayShootingSound(thisWeaponModel);
         
         Debug.Log("Firing");
         
@@ -144,7 +154,10 @@ public class Weapon : MonoBehaviour
     
     private void Reload()
     {
-        SoundManager.Instance.reloadingSoundM1911.Play();
+        // SoundManager.Instance.reloadingSoundM1911.Play();
+        SoundManager.Instance.PlayReloadSound(thisWeaponModel);
+        
+        animator.SetTrigger("Reload");
         
         isReloading = true;
         Invoke(nameof(ReloadCompleted),reloadTime);
