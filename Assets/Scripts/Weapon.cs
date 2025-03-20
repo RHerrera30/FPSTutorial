@@ -77,7 +77,11 @@ public class Weapon : MonoBehaviour
     {
         if(isActiveWeapon)
         {
+            GetComponent<Outline>().enabled = false;
+            
             // animator.enabled = true;
+            
+            //Empty mag sound
             if (bulletsLeft == 0 && isShooting)
             {
                 SoundManager.Instance.emptyMagazineSoundM1911.Play();
