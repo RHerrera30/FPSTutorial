@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8010743169239426237}
   - component: {fileID: 8446192411864475250}
   - component: {fileID: 2112253728203912776}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MuzzleFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4820,7 +4820,7 @@ GameObject:
   - component: {fileID: 3149725978636247911}
   - component: {fileID: 1618300984535189179}
   - component: {fileID: 4744278678008342228}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4906,7 +4906,7 @@ GameObject:
   - component: {fileID: 1002792803833853247}
   - component: {fileID: 3385634511314687236}
   - component: {fileID: 3067143440542636693}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4990,7 +4990,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6530146812970001945}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5024,7 +5024,7 @@ GameObject:
   - component: {fileID: 601655427577702931}
   - component: {fileID: 388084688170140930}
   - component: {fileID: 8730502928157815788}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5110,7 +5110,7 @@ GameObject:
   - component: {fileID: 3089624824437347684}
   - component: {fileID: 8710515824523371073}
   - component: {fileID: 6162960039661301345}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5199,7 +5199,8 @@ GameObject:
   - component: {fileID: 2418192049307335089}
   - component: {fileID: 3347289662191606611}
   - component: {fileID: -5602200585722393565}
-  m_Layer: 0
+  - component: {fileID: 50869119267923414}
+  m_Layer: 7
   m_Name: M4_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5321,7 +5322,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7157262754848698087}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 6ee619cbd3d380a478bb76ce91e790bc, type: 2}
   m_CullingMode: 0
@@ -5356,6 +5357,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0597421, y: 0.17664653, z: 0.7236116}
   m_Center: {x: -0.004013397, y: 0.008912884, z: 0.023460403}
+--- !u!114 &50869119267923414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157262754848698087}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &8830782887676917899
 GameObject:
   m_ObjectHideFlags: 0
@@ -5367,7 +5386,7 @@ GameObject:
   - component: {fileID: 5600362251241420718}
   - component: {fileID: 3868549815905189713}
   - component: {fileID: 3064187328883737053}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rear_Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

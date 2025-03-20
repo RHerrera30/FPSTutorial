@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4866112552174187719}
   - component: {fileID: 8434350267394807533}
   - component: {fileID: 8326649790261079588}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 7613394335354190457}
   - component: {fileID: 7051470265089130077}
   - component: {fileID: 7320729569913664341}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: M1911
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,8 +232,7 @@ MonoBehaviour:
   bulletsLeft: 0
   isReloading: 0
   ammoDisplay: {fileID: 0}
-  animator: {fileID: 108927355545464254}
-  spawnPosition: {x: 0.1, y: -3, z: 0.725}
+  spawnPosition: {x: 0.1, y: -0.3, z: 0.725}
   spawnRotation: {x: 0, y: 180, z: 0}
   thisWeaponModel: 0
   currentShootingMode: 0
@@ -287,7 +286,7 @@ GameObject:
   - component: {fileID: 6284393944779070014}
   - component: {fileID: 8442038234842431396}
   - component: {fileID: 1940839252330883981}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +372,7 @@ GameObject:
   - component: {fileID: 8431396845451485384}
   - component: {fileID: 2735631424383931449}
   - component: {fileID: 3575625438194114815}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Magazin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +459,7 @@ GameObject:
   - component: {fileID: 5836931960073237251}
   - component: {fileID: 6191046388382265641}
   - component: {fileID: 2971972292395367682}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MuzzleFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5266,7 +5265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4005588848850089080}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5300,7 +5299,7 @@ GameObject:
   - component: {fileID: 4826742485283265128}
   - component: {fileID: 2434388276986287929}
   - component: {fileID: 5566330231485094671}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: M1911
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5386,7 +5385,7 @@ GameObject:
   - component: {fileID: 1584115179093140525}
   - component: {fileID: 210088690542233368}
   - component: {fileID: 4713992479552873699}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
