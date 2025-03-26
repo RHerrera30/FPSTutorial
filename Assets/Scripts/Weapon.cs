@@ -97,7 +97,7 @@ public class Weapon : MonoBehaviour
                 isShooting = Input.GetMouseButtonDown(0);
             }
 
-            if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading)
+            if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading && WeaponManager.Instance.CheckAmmoLeftFor(thisWeaponModel) > 0)
             {
                 Reload();
             }
@@ -120,6 +120,7 @@ public class Weapon : MonoBehaviour
             // }
         }
     }
+    
 
     // ReSharper disable Unity.PerformanceAnalysis
     private void FireWeapon()
@@ -180,7 +181,16 @@ public class Weapon : MonoBehaviour
 
     private void ReloadCompleted()
     {
-        bulletsLeft = magazineSize;
+        if(WeaponManager.Instance.CheckAmmoLeftFor(thisWeaponModel) > magazineSize)
+        {
+            bulletsLeft = magazineSize;
+            WeaponManager.Instance.DecreaseTotalAmmo(bulletsLeft, thisWeaponModel);
+        }
+        else
+        {
+            bulletsLeft = WeaponManager.Instance.CheckAmmoLeftFor(thisWeaponModel);
+            WeaponManager.Instance.DecreaseTotalAmmo(bulletsLeft, thisWeaponModel);
+        }
         isReloading = false;
     }
 
