@@ -23,6 +23,8 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI tacticalAmountUI;
 
     public Sprite emptySlot;
+
+    public GameObject middleDot;
     
     private void Awake()
     {

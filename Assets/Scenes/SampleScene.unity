@@ -1686,6 +1686,7 @@ MonoBehaviour:
   tacticalUI: {fileID: 654237297}
   tacticalAmountUI: {fileID: 654237296}
   emptySlot: {fileID: 21300000, guid: 50971e12cb6b9fd42b1b0a0ea8b80b7f, type: 3}
+  middleDot: {fileID: 1029953105}
 --- !u!1 &1013012436
 GameObject:
   m_ObjectHideFlags: 0
