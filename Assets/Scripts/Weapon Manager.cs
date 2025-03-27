@@ -11,8 +11,16 @@ public class WeaponManager : MonoBehaviour
 
     [Header("Ammo")]
     public int totalRifleAmmo = 0;
-
     public int totalPistolAmmo = 0;
+
+    [Header("Throwables")]
+    public int grenades = 0;
+    public float throwForce = 10f;
+    public GameObject grenadePrefab;
+    public GameObject throwableSpawn;
+    public float forceMultiplier = 0;
+    public float forceMultiplierLimit = 2f;
+    
     
     private void Awake()
     {
@@ -53,7 +61,30 @@ public class WeaponManager : MonoBehaviour
         {
             SwitchActiveSlot(1);
         }
+
+        if (Input.GetKey(KeyCode.G))
+        {
+            forceMultiplier += Time.deltaTime;
+
+            if (forceMultiplier > forceMultiplierLimit)
+            {
+                forceMultiplier = forceMultiplierLimit;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.G))
+        {
+            if (grenades > 0)
+            {
+                ThrowLethal();
+            }
+
+            forceMultiplier = 0;
+        }
+        
     }
+
+    #region || ----- Weapon ----- ||
     public void PickUpWeapon(GameObject pickedUpWeapon)
     {
         AddWeaponIntoActiveSlot(pickedUpWeapon);
@@ -105,7 +136,9 @@ public class WeaponManager : MonoBehaviour
             newWeapon.isActiveWeapon = true;
         }
     }
+    #endregion
 
+    #region || ----- Ammo ----- ||
     public void PickUpAmmo(AmmoBox ammo)
     {
         switch (ammo.ammoType)
@@ -147,4 +180,43 @@ public class WeaponManager : MonoBehaviour
                 return 0;
         }
     }
+    #endregion
+
+    #region || ----- Throwable ----- ||
+
+    public void PickUpThrowable(Throwable throwable)
+    {
+        switch (throwable.throwableType)
+        {
+            case Throwable.ThrowableType.Grenade:
+                PickupGrenade();
+                break;
+        }
+    }
+
+    private void PickupGrenade()
+    {
+        grenades += 1;
+        
+        //Update UI
+        HUDManager.Instance.UpdateThrowables(Throwable.ThrowableType.Grenade);
+    }
+
+    private void ThrowLethal()
+    {
+        GameObject lethalPrefab = grenadePrefab;
+        GameObject throwable = Instantiate(lethalPrefab, throwableSpawn.transform.position, Camera.main.transform.rotation);
+        Rigidbody rb = throwable.GetComponent<Rigidbody>();
+        
+        rb.AddForce(Camera.main.transform.forward * (throwForce * forceMultiplier), ForceMode.Impulse);
+        
+        throwable.GetComponent<Throwable>().hasBeenThrown = true;
+        
+        grenades -= 1;
+        HUDManager.Instance.UpdateThrowables(Throwable.ThrowableType.Grenade);
+    }
+
+    #endregion
+
+    
 }

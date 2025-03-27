@@ -108,4 +108,16 @@ public class HUDManager : MonoBehaviour
         //Null will never happen but we need to return something
         return null;
     }
+
+    public void UpdateThrowables(Throwable.ThrowableType throwable)
+    {
+        switch (throwable)
+        {
+            case Throwable.ThrowableType.Grenade:
+                lethalAmountUI.text = $"{WeaponManager.Instance.grenades}";
+                lethalUI.sprite = Resources.Load<Sprite>("Grenade_Throwable");
+                break;
+                
+        }
+    }
 }
