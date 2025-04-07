@@ -16,6 +16,10 @@ public class SoundManager : MonoBehaviour
     //M48
     public AudioClip m48Shot;
     public AudioSource reloadingSoundM48;
+
+    //Throwables
+    public AudioClip grenadeSound;
+    public AudioSource throwablesChannel;
     private void Awake()
     {
         if (Instance != null && Instance != this)

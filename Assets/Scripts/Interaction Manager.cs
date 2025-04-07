@@ -81,7 +81,6 @@ public class InteractionManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     WeaponManager.Instance.PickUpThrowable(hoveredThrowable);
-                    Destroy(hitObject.gameObject);
                 }
                 
             }
