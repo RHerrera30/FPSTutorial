@@ -5294,12 +5294,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActiveWeapon: 0
+  weaponDamage: 25
   isShooting: 0
   readyToShoot: 0
   shootingDelay: 0.15
   bulletsPerBurst: 1
   burstBulletsLeft: 0
   spreadIntensity: 0.1
+  hipSpreadIntensity: 0
+  adsSpreadIntensity: 0
   bulletPrefab: {fileID: 9030387047580440711, guid: 8ea3cab68f34b0648ad74965be38da9b, type: 3}
   bulletSpawn: {fileID: 6530146812970001945}
   bulletVelocity: 700
@@ -5310,7 +5313,7 @@ MonoBehaviour:
   bulletsLeft: 0
   isReloading: 0
   ammoDisplay: {fileID: 0}
-  spawnPosition: {x: 0, y: 0, z: 0}
+  spawnPosition: {x: 0, y: -0.085, z: 0.15}
   spawnRotation: {x: 0, y: 180, z: 0}
   thisWeaponModel: 1
   currentShootingMode: 2

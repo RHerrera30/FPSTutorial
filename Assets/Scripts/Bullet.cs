@@ -2,17 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int bulletDamage;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -35,6 +25,13 @@ public class Bullet : MonoBehaviour
             Debug.Log("Hit a bottle!");
             collision.gameObject.GetComponent<BeerBottle>().Shatter();
             //Don't destroy bullet in case shooting multiple bottles
+        }
+        
+        if (collision.gameObject.CompareTag("Zombie"))
+        {
+            Debug.Log("Hit a zombie!");
+            collision.gameObject.GetComponent<Zombie>().TakeDamage(bulletDamage);
+            Destroy(gameObject);
         }
     }
 
