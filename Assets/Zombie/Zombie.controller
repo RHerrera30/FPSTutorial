@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrollingTime: 10
   detectionArea: 18
-  patrolSpeed: 2
+  patrolSpeed: 1.5
 --- !u!114 &346170278169755171
 MonoBehaviour:
   m_ObjectHideFlags: 1
