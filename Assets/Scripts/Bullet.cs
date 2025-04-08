@@ -30,9 +30,30 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Hit a zombie!");
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
+
+            if (collision.gameObject.GetComponent<Enemy>().isDead == false)
+            {
+                collision.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
+            }
+
+            CreateBloodSprayEffect(collision);
             Destroy(gameObject);
         }
+    }
+
+    private void CreateBloodSprayEffect(Collision objectHit)
+    {
+        //Where I hit the object
+        ContactPoint contact = objectHit.contacts[0];
+
+        //Creating my blood spray
+        GameObject bloodSprayPrefab = Instantiate(
+            GlobalReferences.Instance.bloodSprayEffect,
+            contact.point,
+            Quaternion.LookRotation(contact.normal));
+        
+        //SHOW BLOOD
+        bloodSprayPrefab.transform.SetParent(objectHit.gameObject.transform);
     }
 
     void CreateBulletImpactEffect(Collision objectHit)

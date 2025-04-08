@@ -1,14 +1,16 @@
 using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int HP = 100;
     private Animator animator;
 
-    private UnityEngine.AI.NavMeshAgent navAgent;
-    
+    private NavMeshAgent navAgent;
+
+    public bool isDead;
 
     private void Start()
     {
@@ -32,10 +34,15 @@ public class Enemy : MonoBehaviour
                 animator.SetTrigger("DIE2");
             }
             
+            isDead = true;
+            
+            SoundManager.Instance.zombieChannel2.PlayOneShot(SoundManager.Instance.zombieDeath);
+            
         }
         else
         {
             animator.SetTrigger("DAMAGE");
+            SoundManager.Instance.zombieChannel2.PlayOneShot(SoundManager.Instance.zombieHurt);
         }
     }
 
