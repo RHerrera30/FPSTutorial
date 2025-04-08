@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 
 public class ZombieSpawnController : MonoBehaviour
@@ -8,6 +9,10 @@ public class ZombieSpawnController : MonoBehaviour
     public int initialZombiesPerWave = 5;
     public int currentZombiesPerWave;
     public GameObject zombiePrefab;
+
+    public TextMeshProUGUI titleWaveOver;
+    public TextMeshProUGUI coolDownCounterTitle;
+    public TextMeshProUGUI currentWaveUI;
 
     public float spawnDelay = 0.5f; //Delay between each zombie spawn
     
@@ -30,6 +35,7 @@ public class ZombieSpawnController : MonoBehaviour
     {
         currentZombiesAlive.Clear();
         currentWave++;
+        currentWaveUI.text = "Wave: " + currentWave;
 
         StartCoroutine(SpawnWave());
     }
@@ -92,14 +98,22 @@ public class ZombieSpawnController : MonoBehaviour
             //Reset the counter
             cooldownCounter = waveCooldown;
         }
+        
+        coolDownCounterTitle.text = cooldownCounter.ToString("F0");
+
     }
 
     private IEnumerator WaveCooldown()
     {
         inCooldown = true;
+        titleWaveOver.gameObject.SetActive(true);
+        coolDownCounterTitle.gameObject.SetActive(true);
+        
         yield return new WaitForSeconds(waveCooldown);
         inCooldown = false;
-
+        titleWaveOver.gameObject.SetActive(false);
+        coolDownCounterTitle.gameObject.SetActive(false);
+        
         currentZombiesPerWave *= 2;
         StartNextWave();
     }
