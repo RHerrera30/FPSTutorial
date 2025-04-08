@@ -28,6 +28,10 @@ public class SoundManager : MonoBehaviour
     public AudioClip zombieDeath;
     public AudioSource zombieChannel;
     public AudioSource zombieChannel2;
+
+    public AudioClip playerHurt;
+    public AudioClip playerDeath;
+    public AudioSource playerChannel;
     
     private void Awake()
     {
