@@ -7,6 +7,8 @@ TagManager:
   - Target
   - Wall
   - Beer
+  - Zombie
+  - Enemy
   layers:
   - Default
   - TransparentFX

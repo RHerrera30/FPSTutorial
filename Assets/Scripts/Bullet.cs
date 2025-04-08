@@ -27,10 +27,10 @@ public class Bullet : MonoBehaviour
             //Don't destroy bullet in case shooting multiple bottles
         }
         
-        if (collision.gameObject.CompareTag("Zombie"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Hit a zombie!");
-            collision.gameObject.GetComponent<Zombie>().TakeDamage(bulletDamage);
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
             Destroy(gameObject);
         }
     }
