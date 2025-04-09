@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Unity.Cinemachine;
 
 public class Throwable : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Throwable : MonoBehaviour
     private float countDown;
     private bool hasExploded = false;
     public bool hasBeenThrown = false;
+    public CinemachineImpulseSource impulseSource;
     
     public enum ThrowableType
     {
@@ -24,6 +26,7 @@ public class Throwable : MonoBehaviour
     private void Start()
     {
         countDown = delay;
+        impulseSource = GetComponent<CinemachineImpulseSource>();
         
     }
 
@@ -88,6 +91,7 @@ public class Throwable : MonoBehaviour
         //Visual effect
         GameObject explosionEffect = GlobalReferences.Instance.grenadeExplosionEffect;
         Instantiate(explosionEffect, transform.position, transform.rotation);
+        impulseSource.GenerateImpulse();
         
         //Play sound
         SoundManager.Instance.throwablesChannel.PlayOneShot(SoundManager.Instance.grenadeSound);
